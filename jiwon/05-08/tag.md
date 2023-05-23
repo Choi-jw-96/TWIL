@@ -19,16 +19,22 @@ INSTALLED_APPS = [
 
 # 대소문자 처리
 TAGGIT_CASE_INSENSITIVE = True
+
 # 태그 클라우드에서 표시할 최대 태그 수
 TAGGIT_LIMIT = 50
+
 # 태그 최대 길이(기본 50)
 TAGGIT_MAX_TAG_LENGT = 30
+
 # 빈 태그 생성을 막는다
 TAGGIT_REMOVE_EMPTY = True
+
 # 문자열에서 태그 추출 구분자(기본',')
 TAGGIT_TAGS_FROM_STRING = ''
+
 # 모델에서 태그 추출 구분자(기본',')
 TAGGIT_TAGS_FROM_MODEL = ''
+
 # 중복 태그를 허용하는가 (기본 False)
 TAGGIT_ALLOW_DUPLICATES = False
 ```
@@ -108,7 +114,6 @@ def create(request):
 ```
 
 ## Update
-
 views.py
 ```py
 @login_required
