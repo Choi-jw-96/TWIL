@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load sass_tags %}
+
+{% block head %}
+<link href="{% sass_src 'custom-bootstrap.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock head %}
+
+{% block body %}
+<h1>Articles</h1>
+<a class="btn btn-primary" href="{% url 'articles:create' %}">CREATE</a>
+{% for article in articles %}
+  <p>제목: 
+    <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+  </p>
+  <p>내용: {{ article.content }}</p>
+  <hr>
+{% endfor %}
+{% endblock body %}

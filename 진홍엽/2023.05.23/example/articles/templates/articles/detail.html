@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load sass_tags %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+<h1>Detail</h1>
+<p>글 번호: {{ article.pk }}</p>
+<p>제목: {{ article.title }}</p>
+<p>내용: {{ article.content }}</p>
+<p>작성일: {{ article.created_at }}</p>
+<p>수정일: {{ article.updated_at }}</p>
+<a class="btn btn-primary" href="{% url 'articles:index' %}">BACK</a>
+{% endblock body %}

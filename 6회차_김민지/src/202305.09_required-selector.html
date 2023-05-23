@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* custom property에 대한 스타일입니다.  */
+        /* cascading 속성이 있기에 사용 전에 먼저 선언해야합니다. */
+        /* 값으로 줄 수 있는 것들은 대부분 선언할 수 있는 것으로 알고 있지만 정확하지 않습니다. */
+        :root {
+            --color-coral: rgb(189, 104, 118);
+            --color-mint: rgb(113, 194, 194);
+            --space-25: 25px;
+            --space-30: 30px;
+        }
+
+
+        /* required가 true인 상태의 input에 대해 select한 경우를 의미합니다. */
+        .login-form input:required {
+            border: 2px solid var(--color-coral);
+            padding: var(--space-25) var(--space-30);
+        }
+        /* not selector라고 하는데 not 안에 selector를 입력하면 해당 selector에 해당하지 않는 것들 선택합니다. */
+        /* not selector 설명을 드리지 않은 것 같아 추가 첨부합니다. */
+        .login-form input:not(:required) {
+            border: 2px solid var(--color-mint);
+            padding: var(--space-25) var(--space-30) var(--space-30) var(--space-25)
+        }
+        /* input을 클릭해서 값을 입력할 수 있는 상황일 때 또는 tab키로 해당 input을 선택할 때 foucs 상태가 됩니다. */
+        /* 해당 스타일을 제거할 경우 굵은 검은색의 테두리가 잡힙니다. */
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <form class="login-form">
+        <input type="text" required>
+        <input type="password">
+    </form>
+    <!-- 웹 사이트에서 열어보시면서 확인해보세요 -->
+    <button id="remove-required-btn">required 해제</button>
+    <button id="add-required-btn">required 설정</button>
+    <script>
+        // required 관련 확인용 JS 코드
+        const loginInput = document.querySelector(".login-form input:required")
+        const removeBtn = document.querySelector("#remove-required-btn")
+        const addBtn = document.querySelector("#add-required-btn")
+
+        const removeRequired = function () {
+            loginInput.required = false
+        }
+        const addRequired = function () {
+            loginInput.required = true
+        }
+        removeBtn.addEventListener("click", removeRequired)
+        addBtn.addEventListener("click", addRequired)
+
+        // 이미지 미리보기 구현 관련 JS 코드 (chatGPT에게 코드 던지고 물어보시는 걸 추천합니다.)
+        const profileImageInput = document.getElementById("profile_image");
+        const profileImagePreview = document.getElementById("preview");
+
+        if (profileImageInput) {
+            profileImageInput.addEventListener("change", function () {
+                const file = this.files[0];
+                const reader = new FileReader();
+                reader.addEventListener("load", function () {
+                    profileImagePreview.src = reader.result;
+                    profileImagePreview.style.display = "block";
+                });
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+</html>

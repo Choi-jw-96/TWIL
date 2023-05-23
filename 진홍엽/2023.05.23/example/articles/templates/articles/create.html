@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load sass_tags %}
+
+{% block head %}
+<link href="{% sass_src 'custom-bootstrap.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock head %}
+
+{% block body %}
+<h1>Create</h1>
+<form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input class="btn btn-primary" type="submit">
+</form>
+<a href="{% url 'articles:index' %}">[back]</a>
+{% endblock body %}
